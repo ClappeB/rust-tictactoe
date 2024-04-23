@@ -1,0 +1,11 @@
+# https://taskfile.dev
+
+version: '3'
+
+tasks:
+  devbox-clean:
+    aliases:
+      - dev-clean
+    cmds:
+      - devbox run -- nix store gc --extra-experimental-features nix-command
+    silent: true

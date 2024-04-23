@@ -1,21 +1,26 @@
 {
   "$schema": "https://raw.githubusercontent.com/jetify-com/devbox/0.10.5/.schema/devbox.schema.json",
-  "packages": [
-    "go-task@latest",
-    "dagger@latest",
-    "rustc@latest",
-    "gtk4@latest",
-    "cargo@latest",
-    "rustfmt@latest"
-  ],
+  "packages": {
+    "go-task":  "latest",
+    "dagger":   "latest",
+    "libiconv": "latest",
+    "gtk4": {
+      "version": "latest",
+      "outputs": ["out", "dev"]
+    },
+    "rustup":   "latest"
+  },
+  "env": {
+    "PROJECT_DIR": "$PWD"
+  },
   "shell": {
     "init_hook": [
-      "echo 'Welcome to devbox!' > /dev/null"
+      "rustup default stable",
+      "cargo fetch"
     ],
     "scripts": {
-      "test": [
-        "echo \"Error: no test specified\" && exit 1"
-      ]
+      "build": "cargo build",
+      "start": "cargo run"
     }
   }
 }
